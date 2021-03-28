@@ -39,10 +39,16 @@ def step_impl(context,user_keyword):
 @given('点击页面左下角向上符号^')
 def step_impl(context):
     context.driver.find_element(By.XPATH,"//em[contains(text(),'superuser')]").click()
+    time.sleep(5)
 
 @when('当超链接"{logout}"出现时，单击此超链接')
-def step_impl(context):
-    pass
+def step_impl(context,logout):
+    context.driver.find_element(By.XPATH,"//a[contains(text(),'" + logout + "')]").click()
+    time.sleep(5)
+
+@then('页面跳转到登录页面，并且有字样"{logout_keyword}"')
+def step_impl(context,logout_keyword):
+    assert logout_keyword in context.driver.page_source
 
 
 
