@@ -11,11 +11,10 @@ def after_feature(context,feature):
 '''
 
 
-
-def before_all(context):
+def before_feature(context,feature):
     context.driver = webdriver.Firefox()
     context.driver.implicitly_wait(10)
 
 
-def after_all(context):
+def after_feature(context,feature):
     context.driver.quit()
